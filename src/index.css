@@ -1,0 +1,221 @@
+@import "tailwindcss";
+
+/* ============================================================
+   NEXA | WAFACASH MANAGEMENT — Design Tokens
+   Corporate navy / dark slate + gold / warm-yellow accents
+   ============================================================ */
+@theme {
+  --font-sans: "Inter", "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Orbitron", "Space Grotesk", ui-sans-serif, sans-serif;
+  --font-arabic: "Cairo", "Tajawal", "Segoe UI", sans-serif;
+
+  /* Wafacash corporate navy */
+  --color-wafa-navy-50: #eef4ff;
+  --color-wafa-navy-100: #d9e6f7;
+  --color-wafa-navy-200: #b3c9e8;
+  --color-wafa-navy-300: #7f9fc9;
+  --color-wafa-navy-400: #4d709f;
+  --color-wafa-navy-500: #2b4b75;
+  --color-wafa-navy-600: #1c365a;
+  --color-wafa-navy-700: #132947;
+  --color-wafa-navy-800: #0c1d35;
+  --color-wafa-navy-900: #081426;
+  --color-wafa-navy-950: #050d1c;
+
+  /* Wafacash gold / warm yellow */
+  --color-wafa-gold-50: #fffbeb;
+  --color-wafa-gold-100: #fef3c7;
+  --color-wafa-gold-200: #fde68a;
+  --color-wafa-gold-300: #fcd34d;
+  --color-wafa-gold-400: #e9c46a;
+  --color-wafa-gold-500: #d4af37;
+  --color-wafa-gold-600: #b8860b;
+  --color-wafa-gold-700: #926c0a;
+  --color-wafa-gold-800: #6f5208;
+  --color-wafa-gold-900: #4d3905;
+
+  /* Brand alias (kept for existing components) */
+  --color-nexa-50: #fffbeb;
+  --color-nexa-100: #fef3c7;
+  --color-nexa-200: #fde68a;
+  --color-nexa-300: #fcd34d;
+  --color-nexa-400: #e9c46a;
+  --color-nexa-500: #d4af37;
+  --color-nexa-600: #b8860b;
+  --color-nexa-700: #926c0a;
+  --color-nexa-800: #6f5208;
+  --color-nexa-900: #4d3905;
+
+  /* Legacy cyan/blue accents are remapped to Wafacash gold so every
+     existing surface follows the client palette consistently. */
+  --color-cyan-50: #fffbeb;
+  --color-cyan-100: #fef3c7;
+  --color-cyan-200: #fde68a;
+  --color-cyan-300: #fcd34d;
+  --color-cyan-400: #e9c46a;
+  --color-cyan-500: #d4af37;
+  --color-cyan-600: #b8860b;
+  --color-cyan-700: #926c0a;
+  --color-cyan-800: #6f5208;
+  --color-cyan-900: #4d3905;
+
+  --color-blue-50: #fffbeb;
+  --color-blue-100: #fef3c7;
+  --color-blue-200: #fde68a;
+  --color-blue-300: #fcd34d;
+  --color-blue-400: #d4af37;
+  --color-blue-500: #b8860b;
+  --color-blue-600: #926c0a;
+  --color-blue-700: #6f5208;
+  --color-blue-800: #4d3905;
+  --color-blue-900: #362804;
+
+  --animate-float: nexa-float 7s ease-in-out infinite;
+  --animate-float-slow: nexa-float 11s ease-in-out infinite;
+  --animate-scan: nexa-scan 3.4s linear infinite;
+  --animate-fade-up: nexa-fade-up 0.5s ease-out both;
+  --animate-spin-slow: nexa-spin-slow 14s linear infinite;
+  --animate-pulse-glow: nexa-pulse-glow 3s ease-in-out infinite;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background-color: #050d1c;
+    color: #e2e8f0;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: rgb(212 175 55 / 0.35);
+    color: #fffbeb;
+  }
+
+  /* Custom scrollbars */
+  ::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #050d1c;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #16233a;
+    border-radius: 9999px;
+    border: 2px solid #050d1c;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #b8860b;
+  }
+}
+
+/* ============================================================
+   Reusable surface / glow utilities
+   ============================================================ */
+@utility glass {
+  background-color: rgb(10 22 40 / 0.62);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgb(212 175 55 / 0.14);
+}
+
+@utility glass-strong {
+  background-color: rgb(5 13 28 / 0.86);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid rgb(212 175 55 / 0.18);
+}
+
+@utility neon-border {
+  border: 1px solid rgb(212 175 55 / 0.32);
+  box-shadow: 0 0 20px rgb(212 175 55 / 0.15);
+}
+
+@utility neon-ring {
+  box-shadow:
+    0 0 0 1px rgb(212 175 55 / 0.42),
+    0 0 24px rgb(212 175 55 / 0.28);
+}
+
+@utility text-glow {
+  text-shadow: 0 0 14px rgb(233 196 106 / 0.55);
+}
+
+@utility grid-bg {
+  background-image:
+    linear-gradient(to right, rgb(28 54 90 / 0.32) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(28 54 90 / 0.32) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+
+@utility hide-scrollbar {
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+}
+
+/* ============================================================
+   Animations
+   ============================================================ */
+@keyframes nexa-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes nexa-scan {
+  0% {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(320%);
+    opacity: 0;
+  }
+}
+
+@keyframes nexa-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes nexa-spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes nexa-pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 22px rgb(212 175 55 / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 42px rgb(212 175 55 / 0.45);
+  }
+}
